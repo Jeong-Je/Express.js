@@ -21,3 +21,4 @@ app.listen(app.get('port'), () => {
 
 
 app.use('/', postListRouter);
+app.use('/post_detail', postDetailRouter);
