@@ -1,0 +1,15 @@
+a{
+    text-decoration: none;
+}
+
+.post_upload_title {
+    width: 100%;
+    height: 2em;
+    resize: none;
+}
+
+.post_upload_content {
+    width: 100%;
+    height: 6.25em;
+    resize: none;
+}

@@ -20,7 +20,11 @@ router.get('/', async (req, res) => {
 
     // console.log(posts[0].dataValues.title);
     // console.log(posts);
-    res.render('post_list', { posts : posts});
+    if(req.session.user){
+        res.render('post_list', { posts : posts, username: req.session.user.username});
+    }else{
+        res.render('post_list', { posts : posts, username: "로그인x"});
+    }
 })
 
 module.exports = router;
