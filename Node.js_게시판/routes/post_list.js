@@ -14,12 +14,9 @@ router.get('/', async (req, res) => {
         }],
         attributes: [
             'title','id',
-            [Sequelize.fn('date_format', Sequelize.col('Post.created_at'), '%y년%m월%d일%H시%m분'), 'formattedDate']
+            [Sequelize.fn('date_format', Sequelize.col('Post.created_at'), '%y년%m월%d일%H시%i분'), 'formattedDate']
         ]
     });
-
-    // console.log(posts[0].dataValues.title);
-    // console.log(posts);
     if(req.session.user){
         res.render('post_list', { posts : posts, username: req.session.user.username});
     }else{

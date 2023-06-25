@@ -10,6 +10,7 @@ const postDetailRouter = require('./routes/post_detail');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
 const postUploadRouter = require('./routes/post_upload');
+const commentUploadRouter = require('./routes/comment_upload');
 
 /* 아래 두 코드로 인해 req.body 사용가능 */
 app.use(express.json());
@@ -37,6 +38,9 @@ app.use('/', postListRouter);
 app.use('/post_detail', postDetailRouter);
 app.use('/post_upload', postUploadRouter);
 app.use('/login', loginRouter);
+app.use('/register', registerRouter);
+app.use('/comment_upload', commentUploadRouter);
+
 app.get('/logout', (req, res) => {
     req.session.destroy( // 세션 삭제
     function (err) {

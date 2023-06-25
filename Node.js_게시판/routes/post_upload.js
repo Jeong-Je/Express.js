@@ -1,5 +1,7 @@
 const express = require('express');
 
+const { Post } = require('../models');
+const { User } = require('../models');
 
 const app = express();
 const router = express.Router();
@@ -14,6 +16,25 @@ router.get('/', (req, res) => {
         </script>
         `)
     }
+})
+
+router.post('/', async (req, res) => {
+    const title = req.body.title;
+    const content = req.body.content;
+    const id = await User.findOne({
+        attributes: ['id'],
+        where: {
+            username: req.session.user.username,
+        }
+    })
+
+    const createdPost = await Post.create({
+        title: title,
+        content: content,
+        poster: id.id,
+    })
+
+    res.redirect(`/post_detail/${createdPost.id}`);
 })
 
 module.exports = router;
