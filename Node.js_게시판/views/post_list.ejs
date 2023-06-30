@@ -8,39 +8,44 @@
     <title>게시글 목록</title>
 </head>
 <body>
-    <table>
-        <thead>
-           <tr>
-              <th>번호</th>
-              <th>제목</th>
-              <th>작성자</th>
-              <th>작성일자</th>
-           </tr>
-        </thead>
-        <tbody>
-           <% for (let i = posts.length -1; i >= 0; i--) { %>
-              <tr>
-                 <td>
-                    <%= i+1 %>
-                 </td>
-                 <td>
-                    <a href="/post_detail/<%= posts[i].dataValues.id %>"><%= posts[i].dataValues.title %></a>
-                 </td>
-                 <td>
-                    <%= posts[i].User.username %>
-                 </td>
-                 <td>
-                    <%= posts[i].dataValues.formattedDate %>
-                 </td>
-              </tr>
-           <% } %>
-        </tbody>
-     </table>
-     <button type="button" onclick="location.href='/post_upload'">글쓰기</button>
-     <button type="button" onclick="location.href='/login'">로그인</button>
-     <button type="button" onclick="location.href='/logout'">로그아웃</button>
-     <% if(!(username == '로그인x')){ %>
-      <h4><%= username %>님 안녕하세요.</h4>
-     <% } %>
+   <div id="main_form">
+      <% if(!(username == '로그인x')){ %>
+         <h4>"<%= username %>"님 안녕하세요.</h4>
+         <button class="button" type="button" onclick="location.href='/logout'">로그아웃</button>
+      <% }else{ %>
+         <button class="button" type="button" onclick="location.href='/login'">로그인</button>
+      <% } %>
+      <table>
+         <thead>
+            <tr style="text-align: center;">
+               <th>번호</th>
+               <th>제목</th>
+               <th>작성자</th>
+               <th>작성일자</th>
+            </tr>
+         </thead>
+         <tbody>
+            <% for (let i = posts.length -1; i >= 0; i--) { %>
+               <tr>
+                  <td>
+                     <%= i+1 %>
+                  </td>
+                  <td>
+                     <a href="/post_detail/<%= posts[i].dataValues.id %>"><%= posts[i].dataValues.title %></a>
+                  </td>
+                  <td>
+                     <%= posts[i].User.username %>
+                  </td>
+                  <td>
+                     <%= posts[i].dataValues.formattedDate %>
+                  </td>
+               </tr>
+            <% } %>
+         </tbody>
+      </table>
+      <button class="post_button" type="button" onclick="location.href='/post_upload'">글쓰기</button>
+      
+   </div>
+
 </body>
 </html>

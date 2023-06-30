@@ -13,3 +13,26 @@ a{
     height: 6.25em;
     resize: none;
 }
+
+body{
+    background-color: #AAA2C2;
+}
+
+#main_form{
+    display: flex;
+    flex-direction: column;
+}
+
+table {
+    table-layout: fixed;
+    text-align: center;
+  }
+
+.button{
+    width:10%;
+}
+
+.post_button{
+    margin-left: auto;
+    width:10%;
+}
