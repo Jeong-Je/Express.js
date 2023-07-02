@@ -7,10 +7,14 @@
     <title>글쓰기</title>
 </head>
 <body>
-    <form action="/post_upload" method="post">
-        제목<input  class="post_upload_title" type="text" name="title" required><br>
-        내용<textarea class="post_upload_content" name="content" cols="30" rows="5"></textarea><br>
-        <button type="submit">글쓰기</button>
-    </form>
+    <div class="post_upload">
+        <form action="/post_upload" method="post">
+            제목<input  class="post_upload_title" type="text" name="title" required><br><br>
+            내용<textarea class="textarea" name="content"></textarea><br>
+            <button onclick="location.href='/'">작성취소</button>
+            <button type="submit">작성하기</button>
+        </form>
+    </div>
+
 </body>
 </html>

@@ -6,9 +6,8 @@ const { Post } = require('../models');
 const router = express.Router();
 
 
-router.get('/', async (req, res) => {
-    let pageNum = 1;
-
+router.get('/:id?', async (req, res) => {
+    let pageNum = req.params.id || 1;
     const postsPerPage = 20;
     const offset = (pageNum -1) * postsPerPage;
     

@@ -6,6 +6,7 @@ const expressSession = require('express-session');
 const app = express();
 
 const postListRouter = require('./routes/post_list');
+const pageRouter = require('./routes/page');
 const postDetailRouter = require('./routes/post_detail');
 const loginRouter = require('./routes/login');
 const registerRouter = require('./routes/register');
@@ -35,6 +36,7 @@ app.listen(app.get('port'), () => {
 
 
 app.use('/', postListRouter);
+app.use('/page', pageRouter);
 app.use('/post_detail', postDetailRouter);
 app.use('/post_upload', postUploadRouter);
 app.use('/login', loginRouter);

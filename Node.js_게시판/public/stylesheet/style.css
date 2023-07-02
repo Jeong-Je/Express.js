@@ -1,17 +1,35 @@
+
 a{
     text-decoration: none;
+    color: blue ;
 }
 
+a:hover{
+    color: blueviolet ;
+}
 .post_upload_title {
-    width: 100%;
-    height: 2em;
+    width: 50%;
+    height: 50px;
     resize: none;
 }
 
-.post_upload_content {
-    width: 100%;
+.textarea {
+    width: 50%;
     height: 6.25em;
     resize: none;
+}
+
+.post_upload,
+.post_detail{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#main_form h1,
+#main_form h3,
+#main_form h4{
+    margin:0;
 }
 
 body{
@@ -19,20 +37,37 @@ body{
 }
 
 #main_form{
+    width:800px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
 }
 
 table {
-    table-layout: fixed;
     text-align: center;
+}
+
+.paging{
+    text-align: center;
+}
+
+.Login,
+.unLogin {
+    display: flex;
   }
 
 .button{
     width:10%;
+    display:inline-block;
 }
 
-.post_button{
+.button_2{
     margin-left: auto;
     width:10%;
+}
+
+#register_div,
+#login_div{
+    display:flex;
+    justify-content: center;
 }

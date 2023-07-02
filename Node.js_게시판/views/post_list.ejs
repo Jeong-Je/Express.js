@@ -3,17 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel = "stylesheet" href="stylesheet/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel = "stylesheet" href="/stylesheet/style.css">
     <title>게시글 목록</title>
 </head>
 <body>
    <div id="main_form">
+      <% const pageNum = dataForPaging[0] %>
+      <% const totalPosts = dataForPaging[1] %>
+      <% const MaxPageNum = dataForPaging[2] %>
       <% if(!(username == '로그인x')){ %>
-         <h4>"<%= username %>"님 안녕하세요.</h4>
-         <button class="button" type="button" onclick="location.href='/logout'">로그아웃</button>
+         <div class="Login">
+            <h4>"<%= username %>"님 안녕하세요.</h4>
+            <button class="button" type="button" onclick="location.href='/logout'">로그아웃</button>
+         </div>
       <% }else{ %>
-         <button class="button" type="button" onclick="location.href='/login'">로그인</button>
+         <div class="unLogin">
+            <button class="button" type="button" onclick="location.href='/login'">로그인</button>
+            <button class="button" type="button" onclick="location.href='/register'">회원가입</button>
+          </div>
       <% } %>
       <table>
          <thead>
@@ -25,10 +33,10 @@
             </tr>
          </thead>
          <tbody>
-            <% for (let i = posts.length -1; i >= 0; i--) { %>
+            <% for (let i = 0; i <=posts.length -1; i++) { %>
                <tr>
                   <td>
-                     <%= i+1 %>
+                     <%= MaxPageNum -i %>
                   </td>
                   <td>
                      <a href="/post_detail/<%= posts[i].dataValues.id %>"><%= posts[i].dataValues.title %></a>
@@ -43,9 +51,38 @@
             <% } %>
          </tbody>
       </table>
-      <button class="post_button" type="button" onclick="location.href='/post_upload'">글쓰기</button>
+      <div class="paging">
+         <tr>
+           <td>
+           <% let currentPage = parseInt(pageNum);
+              let startPage = Math.max(currentPage - 2, 1);
+              let endPage = Math.min(startPage + 4, Math.ceil(totalPosts / 20));
+       
+              if (currentPage > 1) {
+                %>
+                <span><a href="/page/1">처음</a></span>
+                <%
+              }
+       
+              for (let i = startPage; i <= endPage; i++) {
+                %>
+                <span><a href="/page/<%= i %>"><%= i %></a></span>
+                <%
+              }
+       
+              if (currentPage < Math.ceil(totalPosts / 20)) {
+                %>
+                <span><a href="/page/<%= Math.ceil(totalPosts / 20) %>">마지막</a></span>
+                <%
+              }
+            %>
+           </td>
+         </tr>
+       </div>
+       
+       
+      <button class="button_2" type="button" onclick="location.href='/post_upload'">글쓰기</button>
       
    </div>
-
 </body>
 </html>
