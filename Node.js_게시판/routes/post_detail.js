@@ -4,7 +4,6 @@ const { User } = require('../models');
 const { Post } = require('../models');
 const { Comment } = require('../models');
 
-const app = express();
 const router = express.Router();
 
 
