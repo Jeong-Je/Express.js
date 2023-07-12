@@ -20,6 +20,7 @@ app.listen(app.get('port'), () =>{
     console.log(`${app.get('port')}번 포트에서 대기 중.`)
 })
 
+let cnt = 0;
 app.get('/', (req, res) =>{
-    res.render('main');
+    res.render('main', { cnt: cnt});
 })
