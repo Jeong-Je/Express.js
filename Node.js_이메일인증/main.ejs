@@ -8,7 +8,12 @@
 <body>
     <form action="/mail" method="post">
         <p><input type="email" name="email" placeholder="이메일 입력" required></p>
-        <p><input type="submit" value="입력"></p>
+        <button id="submitButton" type="submit">인증번호 보내기</button>
+    </form>
+
+    <form action="/mail" method="get">
+        <p><input type="text" name="authCode" placeholder="인증번호 입력" required></p>
+        <button id="submitButton" type="submit">인증하기</button>
     </form>
 </body>
 </html>

@@ -47,6 +47,10 @@ router.post('/', async(req, res) => {
     res.redirect('/');
 });
 
+router.get('/', (req, res) =>{
+  const userInputCode = req.body.authCode;
+  console.log(userInputCode);
+})
 
 
 module.exports = router;
