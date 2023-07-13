@@ -11,12 +11,14 @@
             <p><input type="email" name="email" placeholder="이메일 입력" required></p>
             <button type="submit">인증번호 보내기</button>
         </form>
-    <% }else{ %>
-        <p><input type="email" name="email" placeholder="<%= userEmail %>" readonly></p>
-        <form action="/mail" method="get">
+    <% }else if (cnt == 1){ %>
+        <form action="/mail" method="post">
+            <p><input type="email" name="email" value="<%= userEmail %>" readonly></p>
             <p><input type="text" name="authCode" placeholder="인증번호 입력" required></p>
             <button type="submit">인증하기</button>
         </form>
+    <% }else{ %>
+        인증성공!
     <% } %>
 
 </body>

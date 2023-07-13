@@ -1,6 +1,6 @@
 const express = require('express');
+const expressSession = require('express-session');
 const path = require('path');
-const morgan = require('morgan');
 
 const app = express();
 
@@ -13,6 +13,12 @@ app.set('view engine', 'ejs');
 app.set('views', './');
 
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(expressSession({
+    secret: 'mysecretkey',
+    resave: false,
+    saveUninitialized: true
+  }));
 
 app.use('/mail', authRouter);
 
